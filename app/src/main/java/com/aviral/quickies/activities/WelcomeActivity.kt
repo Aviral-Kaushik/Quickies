@@ -10,8 +10,9 @@ import com.aviral.quickies.di.AppModuleImplementation
 class WelcomeActivity : AppCompatActivity() {
 
     /**
-     * TODO 1.] Get BID, API KEY and UID from brainshop website and it to constants onject.
+     * TODO 1.] Get BID, API KEY and UID from brainshop.ai website and it to constants object.
      *      2.] paste the below code snippet for the API Call
+     *      3.] Update the API models accordingly to dummy data from the server accordingly to ChatGPT.
      *      3.] Complete the Code for Adapter.
      *      3.] Completed the UI accordingly
      * */
