@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aviral.quickies.application.QuickiesApplication
 import com.aviral.quickies.databinding.ActivityWelcomeBinding
-import com.aviral.quickies.di.AppModule
-import com.aviral.quickies.di.AppModuleImplementation
 
 class WelcomeActivity : AppCompatActivity() {
 

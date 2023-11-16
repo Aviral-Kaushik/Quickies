@@ -4,8 +4,6 @@ import com.aviral.quickies.api.remote.MessageApi
 import com.aviral.quickies.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.await
@@ -18,14 +16,11 @@ class MessageApiImplementation(
 
         CoroutineScope(Dispatchers.IO).launch {
             val answers = api.getAnswers(
-                Constants.BID,
-                Constants.KEY,
-                Constants.UID,
-                userMessage
+                message = userMessage
             ).await()
 
             withContext(Dispatchers.Main) {
-                result(answers[0])
+                result(answers.cnt)
             }
         }
 
