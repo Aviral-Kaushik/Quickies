@@ -1,7 +1,6 @@
 package com.aviral.quickies.api.repository
 
 import com.aviral.quickies.api.remote.MessageApi
-import com.aviral.quickies.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

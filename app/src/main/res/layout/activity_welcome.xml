@@ -4,15 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/quickies_blue"
     tools:context=".activities.WelcomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ic_logo"
+        android:layout_width="214dp"
+        android:layout_height="154dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_quickies_logo_white" />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/ic_logo"
+        app:layout_constraintStart_toStartOf="@id/ic_logo"
+        app:layout_constraintTop_toBottomOf="@id/ic_logo">
+
+        <TextView
+            android:id="@+id/quickies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="top"
+            android:text="@string/app_name"
+            android:textSize="40sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="65dp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_own_ai_assistant"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/quicksand_bold"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"/>
+
+        <TextView
+            android:id="@+id/version_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="top"
+            android:text="@string/v_1_0"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="75dp"
+            android:layout_marginStart="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/get_started"
+            android:background="@drawable/ic_get_started_btn_background"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="18sp"
+            android:textColor="@color/quickies_blue"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="58dp"
+            android:layout_marginEnd="58dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/powered_by_ai"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="18sp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
