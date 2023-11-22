@@ -5,4 +5,12 @@
     <string name="v_1_0">v 1.0</string>
     <string name="get_started">Get Started</string>
     <string name="powered_by_ai">Powered By AI</string>
+    <string name="ai_assistant">AI Assistant</string>
+    <string name="ask_me_general_questions">Ask me General Questions</string>
+    <string name="enter_your_message">Enter your Message....</string>
+    <string name="send_message">Send Message</string>
+    <string name="chat_image">Chat Image</string>
+    <string name="background_image">Background Image</string>
+    <string name="back_button">Back Button</string>
+    <string name="info">Info</string>
 </resources>

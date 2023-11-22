@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ChattingActivity">
+
+    <include
+        android:id="@+id/chat_toolbar"
+        layout="@layout/item_chat_toolbar"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/ic_chatting_background"
+        android:contentDescription="@string/background_image"
+        app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_chat_welcome"
+        android:contentDescription="@string/chat_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/message_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/background_edit_text_chat"
+        android:textSize="14sp"
+        android:textColor="@color/purple_text"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="18dp"
+        android:fontFamily="@font/poppins"
+        android:hint="@string/enter_your_message"
+        android:textColorHint="@color/purple_text"
+        android:paddingTop="4dp"
+        android:paddingStart="28dp"
+        android:layout_marginEnd="18dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/background_btn_next"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@id/message_edit_text"
+        app:layout_constraintBottom_toBottomOf="@id/message_edit_text"
+        app:layout_constraintTop_toTopOf="@id/message_edit_text"
+        android:contentDescription="@string/send_message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
