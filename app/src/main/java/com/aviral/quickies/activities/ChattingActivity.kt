@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aviral.quickies.R
 import com.aviral.quickies.databinding.ActivityChattingBinding
+import com.aviral.quickies.utils.DialogUtils
 
 class ChattingActivity : AppCompatActivity() {
 
@@ -16,6 +17,10 @@ class ChattingActivity : AppCompatActivity() {
 
         binding.chatToolbar.icBack.setOnClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
+        }
+
+        binding.chatToolbar.icInfo.setOnClickListener {
+            DialogUtils.showInfoDialog(applicationContext)
         }
 
         binding.btnNext.setOnClickListener {  }

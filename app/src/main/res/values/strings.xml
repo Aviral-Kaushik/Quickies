@@ -17,4 +17,7 @@
     <string name="hii_tell_me_a_joke">Hii, Tell me a joke!</string>
     <string name="answer_message">Answer Message</string>
     <string name="dummy_bot_message">This ChatBot Application is a lightweight version of the real-time AI Assistant and developed in a way that it will only solve the simple general life responses. It is not developed for powerful computations or response.</string>
+    <string name="text_info_dialog1">This ChatBot Application is a lightweight version of the real-time AI Assistant and developed in a way that it will only solve the simple general life responses. It is not developed for powerful computations or response.</string>
+    <string name="text_info_dialog2">This is just a starting version of the Chat Box. Currently, we are working on the heavy-weight chatbot application that can generate the responses like some popular AI tools like ChatGPT, BlackBox and many more.</string>
+    <string name="close">Close</string>
 </resources>

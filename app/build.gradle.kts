@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.aviral.quickies"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.aviral.quickies"
