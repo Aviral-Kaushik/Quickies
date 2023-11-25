@@ -1,9 +1,8 @@
 package com.aviral.quickies.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aviral.quickies.R
+import androidx.appcompat.app.AppCompatActivity
 import com.aviral.quickies.databinding.ActivityChattingBinding
 import com.aviral.quickies.utils.DialogUtils
 

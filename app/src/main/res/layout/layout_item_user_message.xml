@@ -25,6 +25,7 @@
         android:text="@string/hii_tell_me_a_joke"
         android:fontFamily="@font/poppins"
         android:textSize="12sp"
+        android:maxWidth="212dp"
         android:textColor="@color/black_user_message"
         android:background="@drawable/background_user_message"
         app:layout_constraintTop_toTopOf="parent"
