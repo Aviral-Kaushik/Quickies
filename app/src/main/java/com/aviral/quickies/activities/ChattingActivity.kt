@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
@@ -24,7 +25,7 @@ class ChattingActivity : AppCompatActivity() {
 
     private lateinit var chatAdapter: ChatAdapter
 
-    private val messages: List<Message> = mutableListOf()
+    private val messages = mutableListOf<Message>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +43,13 @@ class ChattingActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
+
             if (binding.messageEditText.text.toString() == "") {
                 binding.invalidInputMessageLayout.visibility = View.VISIBLE
             } else {
                 binding.invalidInputMessageLayout.visibility = View.INVISIBLE
+
+                binding.messageEditText.text = Editable.Factory.getInstance().newEditable("")
 
                 getAnswerForUserQuestion(binding.messageEditText.text.toString())
             }
@@ -53,28 +57,15 @@ class ChattingActivity : AppCompatActivity() {
 
         var isWelcomeImageVisible = true
 
-        binding.messageEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        binding.messageEditText.setOnClickListener {
+            if (isWelcomeImageVisible) {
+
+                wipeWelcomeImage()
+
+                isWelcomeImageVisible = false
 
             }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                if (isWelcomeImageVisible) {
-
-                    wipeWelcomeImage()
-
-                    isWelcomeImageVisible = false
-
-                }
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-        })
+        }
     }
 
     private fun wipeWelcomeImage() {
@@ -138,11 +129,16 @@ class ChattingActivity : AppCompatActivity() {
 
     private fun getAnswerForUserQuestion(message: String) {
 
-        messages.toMutableList().add(Message(message, getString(R.string.user_message)))
+        messages.add(Message(message, getString(R.string.user_message)))
         chatAdapter.newMessage(messages)
 
-        QuickiesApplication.appModule.messageRepository.getAnswers(message) { botAnswer->
-            messages.toMutableList().add(Message(botAnswer, getString(R.string.bot_message)))
+        QuickiesApplication.appModule.messageRepository.getAnswers(message) { botAnswer ->
+            if (botAnswer != "") {
+                messages.add(Message(botAnswer, getString(R.string.bot_message)))
+            } else {
+                messages.add(Message("Something Went Wrong", getString(R.string.bot_message)))
+            }
+
             chatAdapter.newMessage(messages)
         }
 

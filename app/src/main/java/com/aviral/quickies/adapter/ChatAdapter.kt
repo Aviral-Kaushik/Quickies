@@ -1,6 +1,7 @@
 package com.aviral.quickies.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +47,7 @@ class ChatAdapter(
 
             botMessageType -> {
 
+
                 val botViewHolder = holder as BotMessageViewHolder
 
                 botViewHolder.botMessage.text = messages[position].message
@@ -78,7 +80,7 @@ class ChatAdapter(
         return messages.size
     }
 
-    public fun newMessage(messages: List<Message>) {
+    fun newMessage(messages: List<Message>) {
         this.messages = messages
         notifyDataSetChanged()
     }

@@ -17,7 +17,7 @@ class AppModuleImplementation : AppModule {
     override val messageApi: MessageApi by lazy {
 
         Retrofit.Builder()
-            .baseUrl("http://api.brainshop.ai")
+            .baseUrl("http://api.brainshop.ai/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MessageApi::class.java)

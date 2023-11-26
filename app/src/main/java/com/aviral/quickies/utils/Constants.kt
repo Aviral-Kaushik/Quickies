@@ -6,6 +6,6 @@ object Constants {
 
     const val KEY = "NY8EU3yKwX0UTEie"
 
-    const val UID = ""
+    const val UID = "1"
 
 }

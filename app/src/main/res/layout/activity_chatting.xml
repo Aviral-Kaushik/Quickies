@@ -12,9 +12,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:srcCompat="@drawable/ic_chatting_background"
+        android:scaleType="centerCrop"
         android:contentDescription="@string/background_image"
         app:layout_constraintTop_toBottomOf="@id/chat_toolbar"
         app:layout_constraintStart_toStartOf="parent"

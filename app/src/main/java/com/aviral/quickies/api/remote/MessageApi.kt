@@ -14,6 +14,6 @@ interface MessageApi {
         @Query("key") key : String = Constants.KEY,
         @Query("uid") uid : String = Constants.UID,
         @Query("msg") message : String
-    ) : Call<BrainResponse>
+    ) : BrainResponse
 
 }
