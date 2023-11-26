@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aviral.quickies.R
 import com.aviral.quickies.adapter.ChatAdapter
+import com.aviral.quickies.application.QuickiesApplication
 import com.aviral.quickies.databinding.ActivityChattingBinding
+import com.aviral.quickies.models.Message
 import com.aviral.quickies.utils.DialogUtils
 
 
@@ -21,6 +23,9 @@ class ChattingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChattingBinding
 
     private lateinit var chatAdapter: ChatAdapter
+
+    private val messages: List<Message> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChattingBinding.inflate(layoutInflater)
@@ -36,7 +41,15 @@ class ChattingActivity : AppCompatActivity() {
             DialogUtils.showInfoDialog(applicationContext)
         }
 
-        binding.btnNext.setOnClickListener { }
+        binding.btnNext.setOnClickListener {
+            if (binding.messageEditText.text.toString() == "") {
+                binding.invalidInputMessageLayout.visibility = View.VISIBLE
+            } else {
+                binding.invalidInputMessageLayout.visibility = View.INVISIBLE
+
+                getAnswerForUserQuestion(binding.messageEditText.text.toString())
+            }
+        }
 
         var isWelcomeImageVisible = true
 
@@ -117,9 +130,21 @@ class ChattingActivity : AppCompatActivity() {
 
         val linearLayoutManager = LinearLayoutManager(this)
 
-        chatAdapter = ChatAdapter(this, emptyList())
+        chatAdapter = ChatAdapter(this, messages)
 
         binding.messageRecyclerView.layoutManager = linearLayoutManager
         binding.messageRecyclerView.adapter = chatAdapter
+    }
+
+    private fun getAnswerForUserQuestion(message: String) {
+
+        messages.toMutableList().add(Message(message, getString(R.string.user_message)))
+        chatAdapter.newMessage(messages)
+
+        QuickiesApplication.appModule.messageRepository.getAnswers(message) { botAnswer->
+            messages.toMutableList().add(Message(botAnswer, getString(R.string.bot_message)))
+            chatAdapter.newMessage(messages)
+        }
+
     }
 }

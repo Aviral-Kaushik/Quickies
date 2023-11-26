@@ -11,7 +11,7 @@ import com.aviral.quickies.models.Message
 
 class ChatAdapter(
     private val context: Context,
-    private val messages: List<Message>
+    private var messages: List<Message>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val userMessageType = 1
@@ -76,6 +76,11 @@ class ChatAdapter(
 
     override fun getItemCount(): Int {
         return messages.size
+    }
+
+    public fun newMessage(messages: List<Message>) {
+        this.messages = messages
+        notifyDataSetChanged()
     }
 
     inner class UserMessageViewHolder(binding: LayoutItemUserMessageBinding) :
