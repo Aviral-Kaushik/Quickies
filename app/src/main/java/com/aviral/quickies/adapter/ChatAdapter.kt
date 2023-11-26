@@ -1,13 +1,16 @@
 package com.aviral.quickies.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.aviral.quickies.R
 import com.aviral.quickies.databinding.LayoutItemBotMessageBinding
 import com.aviral.quickies.databinding.LayoutItemUserMessageBinding
 import com.aviral.quickies.models.Message
 
 class ChatAdapter(
+    private val context: Context,
     private val messages: List<Message>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -63,7 +66,7 @@ class ChatAdapter(
 
     override fun getItemViewType(position: Int): Int {
 
-        return if (messages[position].messageType == "Bot Message") {
+        return if (messages[position].messageType == context.getString(R.string.bot_message)) {
             botMessageType
         } else {
             userMessageType
