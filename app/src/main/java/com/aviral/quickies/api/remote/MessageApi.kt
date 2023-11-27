@@ -9,11 +9,11 @@ import retrofit2.http.Query
 interface MessageApi {
 
     @GET("/get")
-    suspend fun getAnswers(
+    fun getAnswers(
         @Query("bid") bid : String = Constants.BID,
         @Query("key") key : String = Constants.KEY,
         @Query("uid") uid : String = Constants.UID,
         @Query("msg") message : String
-    ) : BrainResponse
+    ) : Call<BrainResponse>
 
 }

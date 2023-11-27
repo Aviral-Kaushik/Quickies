@@ -16,10 +16,10 @@ class MessageApiImplementation(
         CoroutineScope(Dispatchers.IO).launch {
             val answers = api.getAnswers(
                 message = userMessage
-            )
+            ).await()
 
             withContext(Dispatchers.Main) {
-                result(answers.cnt)
+               result(answers.cnt)
             }
         }
 

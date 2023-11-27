@@ -3,8 +3,6 @@ package com.aviral.quickies.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
@@ -36,10 +34,11 @@ class ChattingActivity : AppCompatActivity() {
 
         binding.chatToolbar.icBack.setOnClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
+            finish()
         }
 
         binding.chatToolbar.icInfo.setOnClickListener {
-            DialogUtils.showInfoDialog(applicationContext)
+            DialogUtils.showInfoDialog(this)
         }
 
         binding.btnNext.setOnClickListener {
@@ -49,9 +48,9 @@ class ChattingActivity : AppCompatActivity() {
             } else {
                 binding.invalidInputMessageLayout.visibility = View.INVISIBLE
 
-                binding.messageEditText.text = Editable.Factory.getInstance().newEditable("")
-
                 getAnswerForUserQuestion(binding.messageEditText.text.toString())
+
+                binding.messageEditText.text = Editable.Factory.getInstance().newEditable("")
             }
         }
 
@@ -62,6 +61,7 @@ class ChattingActivity : AppCompatActivity() {
 
                 wipeWelcomeImage()
 
+//                rotateWelcomeImage()
                 isWelcomeImageVisible = false
 
             }
@@ -132,6 +132,8 @@ class ChattingActivity : AppCompatActivity() {
         messages.add(Message(message, getString(R.string.user_message)))
         chatAdapter.newMessage(messages)
 
+        binding.messageRecyclerView.smoothScrollToPosition(messages.size - 1)
+
         QuickiesApplication.appModule.messageRepository.getAnswers(message) { botAnswer ->
             if (botAnswer != "") {
                 messages.add(Message(botAnswer, getString(R.string.bot_message)))
@@ -140,6 +142,8 @@ class ChattingActivity : AppCompatActivity() {
             }
 
             chatAdapter.newMessage(messages)
+
+            binding.messageRecyclerView.smoothScrollToPosition(messages.size - 1)
         }
 
     }
