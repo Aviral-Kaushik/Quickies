@@ -38,7 +38,12 @@ class ChattingActivity : AppCompatActivity() {
         }
 
         binding.chatToolbar.icInfo.setOnClickListener {
-            DialogUtils.showInfoDialog(this)
+            binding.transparentBlackView.visibility = View.VISIBLE
+
+            DialogUtils.showInfoDialog(this) {
+                binding.transparentBlackView.visibility = View.INVISIBLE
+            }
+
         }
 
         binding.btnNext.setOnClickListener {
@@ -56,11 +61,10 @@ class ChattingActivity : AppCompatActivity() {
 
         var isWelcomeImageVisible = true
 
-        binding.messageEditText.setOnClickListener {
+        binding.messageEditText.setOnFocusChangeListener { _: View, _: Boolean ->
             if (isWelcomeImageVisible) {
-
-                wipeWelcomeImage()
-
+                binding.welcomeImage.visibility = View.GONE
+//                wipeWelcomeImage()
 //                rotateWelcomeImage()
                 isWelcomeImageVisible = false
 
@@ -135,6 +139,7 @@ class ChattingActivity : AppCompatActivity() {
         binding.messageRecyclerView.smoothScrollToPosition(messages.size - 1)
 
         QuickiesApplication.appModule.messageRepository.getAnswers(message) { botAnswer ->
+
             if (botAnswer != "") {
                 messages.add(Message(botAnswer, getString(R.string.bot_message)))
             } else {

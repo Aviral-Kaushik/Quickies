@@ -11,7 +11,7 @@ class DialogUtils {
 
     companion object {
 
-        fun showInfoDialog(context: Context) {
+        fun showInfoDialog(context: Context, callBack: (Boolean) -> Unit) {
 
             val infoDialog = Dialog(context, android.R.style.Theme_Translucent_NoTitleBar)
 
@@ -26,7 +26,10 @@ class DialogUtils {
             window?.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
             window?.setGravity(Gravity.CENTER)
 
-            binding.btnClose.setOnClickListener { infoDialog.dismiss() }
+            binding.btnClose.setOnClickListener {
+                infoDialog.dismiss()
+                callBack(true)
+            }
 
             infoDialog.show()
 
